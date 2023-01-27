@@ -49,9 +49,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleAPIData(data: String){
         val contactResult = Gson().fromJson(data, Model::class.java)
-        val ContactCategory =contactResult.data//.firstOrNull{ it.nameFr == category}
+        val contactCategory =contactResult.data
         val adapter = binding.listCon.adapter as CustomAdapter
-        adapter.refreshList(ContactCategory as ArrayList<Results>)
+        adapter.refreshList(contactCategory)
 
     }
 }
