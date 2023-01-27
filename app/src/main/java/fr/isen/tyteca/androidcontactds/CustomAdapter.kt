@@ -1,6 +1,6 @@
 package fr.isen.tyteca.androidcontactds
 
-import android.content.ClipData.Item
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

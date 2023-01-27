@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.squareup.picasso.Picasso
 import fr.isen.tyteca.androidcontactds.databinding.ActivityDetailBinding
 import fr.isen.tyteca.androidcontactds.databinding.ActivityMainBinding
 
@@ -22,6 +23,13 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#FF9800")))
         contact = intent.getSerializableExtra("detail") as Results
 
-        binding.textNameView.text = contact.name?.first.toString()
+        if (contact.picture?.large!!.isNotEmpty()) {
+            Picasso.get().load(contact.picture?.large).into(binding.photo)
+        }
+
+        binding.textNameView.text = contact.name?.first +" "+ contact.name?.last
+        binding.addresse.text = contact.location?.street?.number.toString() + " " + contact.location?.street?.name + " " + contact.location?.state + " " + contact.location?.city
+        binding.phoneNumber.text= contact.phone
+        binding.registerDate.text = contact.registered?.date
     }
 }
